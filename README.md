@@ -1,5 +1,5 @@
-Role Name
-=========
+ioncube-encrypt-module
+======================
 
 encrypt listed directories with ioncube encoder
 
