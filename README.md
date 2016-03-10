@@ -1,7 +1,7 @@
 ioncube-encrypt-module
 ======================
 
-encrypt listed directories with ioncube encoder
+encrypt listed directories with ioncube encoder.
 
 Requirements
 ------------
