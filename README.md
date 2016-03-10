@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/votum/ioncube-encrypt-module.svg?branch=master)](https://travis-ci.org/votum/ioncube-encrypt-module.svg?branch=master)
 ioncube-encrypt-module
 ======================
 
