@@ -146,16 +146,16 @@ galaxy_info:
   #  versions:
   #  - all
   #  - any
-  #- name: Debian
-  #  versions:
-  #  - all
-  #  - etch
-  #  - jessie
-  #  - lenny
-  #  - squeeze
-  #  - wheezy
+  - name: Debian
+    versions:
+    - all
+    - etch
+    - jessie
+    - lenny
+    - squeeze
+    - wheezy
   
-  galaxy_tags: []
+  galaxy_tags: [ioncube, encrypt]
     # List tags for your role here, one per line. A tag is
     # a keyword that describes and categorizes the role.
     # Users find roles by searching for tags. Be sure to
