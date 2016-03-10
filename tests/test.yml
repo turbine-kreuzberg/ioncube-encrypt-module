@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  remote_user: root
+  vars:
+    directories_to_encrypt:
+      - /tmp/test
+  pre_tasks:
+  - debug:
+      var: directories_to_encrypt.0
+
+  - name: create directory
+    file:
+      path: "{{directories_to_encrypt.0}}"
+      state: directory
+      mode: 0755
+
+  - name: create test php file
+    shell: printf '<?php \necho "encryped me";\n' >/tmp/test/test.php
+  roles:
+    - ioncube-encrypt-module
+
+  post_tasks:
+  - shell: grep 'IONCUBE ENCODER 9.0 EVALUATION' /tmp/test/test.php
+    register: php_file
+
+  - debug:
+      var: php_file.stdout

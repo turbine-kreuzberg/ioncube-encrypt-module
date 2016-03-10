@@ -1,0 +1,10 @@
+---
+# defaults file for ioncube-encrypt-module
+php_version: 56
+cpu_architecture: x86-64
+
+directories_to_encrypt:
+  - files/test
+
+
+

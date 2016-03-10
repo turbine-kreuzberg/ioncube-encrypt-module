@@ -1,0 +1,23 @@
+---
+# tasks file for ioncube-encrypt-module
+- name: hi here i am!
+  command: ls
+
+- name: install ioncube_encoder
+  unarchive:
+    src: ioncube_encoder_evaluation.tar.gz
+    dest: /usr/share
+
+- name: encypt files
+  command:  /usr/share/ioncube_encoder_evaluation/ioncube_encoder.sh -C -"{{ cpu_architecture }}" -{{ php_version }} "{{ item }}"/ -o "{{ item }}"_encoded --update-target
+  with_items: "{{ directories_to_encrypt }}"
+
+- name: remove folders
+  file:
+    path: "{{item}}"
+    state: absent
+  with_items: "{{ directories_to_encrypt }}"
+
+- name: move folders
+  command: mv "{{item}}"_encoded "{{item}}"
+  with_items: "{{ directories_to_encrypt }}"
