@@ -32,21 +32,21 @@
 
     # Run container in detached state
     - name: run container
-      command: sudo docker run "{{run_opts}}" --detach --volume=/home/ray/PhpstormProjects/ioncube-encrypt-module:/etc/ansible/roles/ioncube-encrypt-module:rw "{{distribution}}"-"{{version}}":ansible "{{init}}"
+      command: sudo docker run "{{run_opts}}" --detach --volume=/home/ray/PhpstormProjects/ioncube-encrypt-module:/etc/ansible/roles/role_under_test:rw "{{distribution}}"-"{{version}}":ansible "{{init}}"
       register: container_id
 
     - debug:
         var: container_id
     ## Ansible syntax check.
-    - command: "sudo docker exec --tty {{container_id.stdout}} env TERM=xterm ansible-playbook /etc/ansible/roles/ioncube-encrypt-module/tests/{{playbook}} --syntax-check"
+    - command: "sudo docker exec --tty {{container_id.stdout}} env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/{{playbook}} --syntax-check"
       ignore_errors: yes
 
     - name: run playbook
-      command: "sudo docker exec --tty {{container_id.stdout}} env TERM=xterm ansible-playbook /etc/ansible/roles/ioncube-encrypt-module/tests/{{playbook}}"
+      command: "sudo docker exec --tty {{container_id.stdout}} env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/{{playbook}}"
       ignore_errors: yes
 
     - name: run playbook second time
-      command: "sudo docker exec --tty {{container_id.stdout}} env TERM=xterm ansible-playbook /etc/ansible/roles/ioncube-encrypt-module/tests/{{playbook}}"
+      command: "sudo docker exec --tty {{container_id.stdout}} env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/{{playbook}}"
       ignore_errors: yes
 
     - name: access to container
